@@ -19,6 +19,8 @@ import com.pracproject.Practice.EmployeeNotFoundException;
 import com.pracproject.Practice.entity.Employee;
 import com.pracproject.Practice.service.EmployeeService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
@@ -46,7 +48,7 @@ public class EmployeeController {
 	}
 	
 	@PutMapping("/addUser/{id}")
-	public ResponseEntity<Optional<Employee>> updateEmployee(@PathVariable int id,@RequestBody Employee updateEmployee){
+	public ResponseEntity<Optional<Employee>> updateEmployee(@PathVariable int id,@Valid @RequestBody Employee updateEmployee){
 		
 		try{
 		Optional<Employee> employee=employeeService.updateUser(id, updateEmployee);

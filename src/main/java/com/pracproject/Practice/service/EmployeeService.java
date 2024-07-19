@@ -10,6 +10,8 @@ import com.pracproject.Practice.EmployeeNotFoundException;
 import com.pracproject.Practice.entity.Employee;
 import com.pracproject.Practice.repository.EmployeeRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class EmployeeService{
 
@@ -29,6 +31,7 @@ public class EmployeeService{
 	{
 		return employeeRepo.findById(id);
 	}
+	@Transactional
 	public Optional<Employee> updateUser(int id,Employee employee)
 	{
 		Optional<Employee> existingEmployee=employeeRepo.findById(id);

@@ -5,6 +5,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name="employee")
@@ -13,11 +16,15 @@ public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+	@NotNull
+	@Size(min=3,max=20,message="First name must be between 2 and 50 characters")
 	private String fName;
+	@NotNull
+	 @Size(min = 10, max = 50, message = "last name must be between 2 and 50 characters")
+	  private String lName;
 	
-	private String lName;
-	
+	@NotNull 
+	@Pattern(regexp = "^\\+?[0-9]{10,15}$", message = "Invalid phone number")
 	private String Phoneno;
 	
 	private String Address;
